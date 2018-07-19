@@ -3,6 +3,7 @@ class OrdersController < ApplicationController
   def show
     @order = Order.find(params[:id])
     @items = LineItem.where(:order_id => @order.id)
+    UserMailer.order_email(@order, @items).deliver
   end
 
   def create
@@ -31,7 +32,7 @@ class OrdersController < ApplicationController
     Stripe::Charge.create(
       source:      params[:stripeToken],
       amount:      cart_total, # in cents
-      description: "Khurram Virani's Jungle Order",
+      description: "Jordan Jungle Order",
       currency:    'cad'
     )
   end
