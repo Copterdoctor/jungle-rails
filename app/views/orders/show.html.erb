@@ -2,11 +2,21 @@
 
   <header class="page-header">
     <h1>Order #<%= @order.id %></h1>
+    <h1>Email #<%= @order.email %></h1>
+    <h1>Total #<%= @order.total_cents %></h1>
+    <h1>Product ID #<%= @items[0].product_id %></h1>
+    <h1>Quantity #<%= @items[0].quantity %></h1>
+    <h1>Item Price #<%= @items[0].item_price_cents %></h1>
+    <h1>Total per Item #<%= @items[0].total_price_cents %></h1>
+   
   </header>
 
   <div class="order-summary jumbotron">
     <h4>Thank you for your order!</h4>
   </div>
+  <section class="cart-show">
+
+</section>
 
   <%= link_to "Continue Shopping", root_path, class: 'btn btn-lg btn-primary' %>
 

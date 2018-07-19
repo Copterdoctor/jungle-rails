@@ -1,12 +1,18 @@
 Rails.application.routes.draw do
 
+  root to: 'products#index'
+
+  # TODO change routes from example to restful routes
+  # resources :login, only: [:new, :create], controller: 'sessions'
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
+  # resources :logout, only: [:destroy], controller: 'sessions'
   get '/logout' => 'sessions#destroy'
 
+  # resources :signup, only: [:new], controller: 'users'
   get '/signup' => 'users#new'
+  # resources :users, only: [:create]
   post '/users' => 'users#create'
-  root to: 'products#index'
 
   resources :products, only: [:index, :show]
   resources :categories, only: [:show]
