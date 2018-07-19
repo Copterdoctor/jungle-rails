@@ -28,4 +28,10 @@ class ApplicationController < ActionController::Base
     redirect_to '/login' unless current_user
   end
 
+  def must_be_admin
+    unless current_user && current_user.admin?
+      redirect_to root_path, notice: "Admin Needed."
+    end
+  end
+
 end

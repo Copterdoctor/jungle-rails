@@ -1,4 +1,5 @@
 class Admin::CategoriesController < ApplicationController
+  before_filter :must_be_admin
   before_action :set_admin_category, only: [:show, :edit, :update, :destroy]
 
   # GET /admin/categories
@@ -59,4 +60,5 @@ class Admin::CategoriesController < ApplicationController
         :name
       )
     end
+
 end

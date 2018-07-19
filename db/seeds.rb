@@ -21,6 +21,18 @@ end
 
 # Let's do this ...
 
+## Admin User
+
+puts "Creating Admin ..."
+
+User.create!({
+  first_name: "Admin",
+  last_name: "Admin",
+  email: ENV["ADMIN_EMAIL"],
+  password: ENV["ADMIN_PASSWORD"],
+  admin: true
+})
+
 ## CATEGORIES
 
 puts "Finding or Creating Categories ..."
