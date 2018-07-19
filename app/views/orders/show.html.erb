@@ -1,20 +1,40 @@
 <section class="orders-show">
 
-  <header class="page-header">
-    <h1>Order #<%= @order.id %></h1>
-    <h1>Email #<%= @order.email %></h1>
-    <h1>Total #<%= @order.total_cents %></h1>
-    <h1>Product ID #<%= @items[0].product_id %></h1>
-    <h1>Quantity #<%= @items[0].quantity %></h1>
-    <h1>Item Price #<%= @items[0].item_price_cents %></h1>
-    <h1>Total per Item #<%= @items[0].total_price_cents %></h1>
-   
-  </header>
-
   <div class="order-summary jumbotron">
     <h4>Thank you for your order!</h4>
+    <h5>
+    Your receipt has been sent to
+    <%= @order.email %>
+    </h5>
   </div>
-  <section class="cart-show">
+    <div class="panel panel-default items">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th colspan="2">Product</th>
+          <th>Unit Price</th>
+          <th>Quantity</th>
+          <th>Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @order_total = 0 %>
+        <% @items.each do |item| %>
+          <%= render 'item', item: item%>
+        <% end %>
+      </tbody>
+      <tfoot>
+        <tr>
+          <th colspan="4">
+            TOTAL:
+          </th>
+          <th>
+            <%= @order_total %>
+          </th>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
 
 </section>
 
