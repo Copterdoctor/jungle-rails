@@ -144,5 +144,27 @@ cat3.products.create!({
   price: 2_483.75
 })
 
+puts "Creating reviews ......."
 
+review1 = Product.find_or_create_by! name: 'Optimal Sleeping Bed'
+review2 = Product.find_or_create_by! name: 'Russian Spy Shoes'
+review3 = Product.find_or_create_by! name: 'Hipster Socks'
+
+review1.review.create!({
+  user_id: 1,
+  description: Faker::GameOfThrones.quote,
+  rating: 4.5
+})
+
+review2.review.create!({
+  user_id: 1,
+  description: Faker::GameOfThrones.quote,
+  rating: 3
+})
+
+review3.review.create!({
+  user_id: 1,
+  description: Faker::GameOfThrones.quote,
+  rating: 1
+})
 puts "DONE!"
