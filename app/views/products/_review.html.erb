@@ -4,4 +4,10 @@
 <dt>Rating</dt>
 <dd><%= review.rating %></dd>
 <dt></dt>
-<dd></dd>
+<dd>
+
+<% if current_user.present? && current_user.id == review.user_id %>
+<%= link_to "Delete Review", "./#{:product_id}/reviews/#{review.id}", controller: "review", method: :delete, data: { confirm: 'Are you sure?' }%>
+<% end %>
+
+</dd>

@@ -15,7 +15,8 @@ Rails.application.routes.draw do
   post '/users' => 'users#create'
 
   resources :products, only: [:index, :show] do
-    post    :reviews, to: 'reviews#create'
+    resources :reviews, only: [:create, :destroy] do
+    end
   end
   
   resources :categories, only: [:show]
