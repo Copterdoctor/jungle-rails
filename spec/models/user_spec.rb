@@ -62,6 +62,16 @@ RSpec.describe User, type: :model do
       user = User.create(:first_name => "TestName", :last_name => "LastName", :email => "example@example.com", :password => "password", :password_confirmation => "password")
       expect(User.authenticate_with_credentials(user, user[:email], "password")).to be true
     end
+    
+    it "Does authentic user with spaces infront of email" do
+      user = User.create(:first_name => "TestName", :last_name => "LastName", :email => "  example@example.com", :password => "password", :password_confirmation => "password")
+      expect(User.authenticate_with_credentials(user, user[:email], "password")).to be true
+    end
+
+    it "Does authentic user with spaces at end of email" do
+      user = User.create(:first_name => "TestName", :last_name => "LastName", :email => "example@example.com  ", :password => "password", :password_confirmation => "password")
+      expect(User.authenticate_with_credentials(user, user[:email], "password")).to be true
+    end
 
     it "Does not authentic user without password" do
       user = User.create(:first_name => "TestName", :last_name => "LastName", :email => "example@example.com", :password => "password", :password_confirmation => "password")

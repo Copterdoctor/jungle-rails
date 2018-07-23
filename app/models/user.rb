@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
   validates :password, length: { minimum: 8 }
 
   def self.authenticate_with_credentials(user, email, password)
-    if (!!(email =~ /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i)) && user.authenticate(password)
+    if (!!(email =~ /\A\s*([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\s*\z/i)) && user.authenticate(password)
       true
     else
       false
