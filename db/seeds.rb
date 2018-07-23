@@ -150,19 +150,19 @@ review1 = Product.find_or_create_by! name: 'Optimal Sleeping Bed'
 review2 = Product.find_or_create_by! name: 'Russian Spy Shoes'
 review3 = Product.find_or_create_by! name: 'Hipster Socks'
 
-review1.review.create!({
+review1.reviews.create!({
   user_id: 1,
   description: Faker::GameOfThrones.quote,
   rating: 4.5
 })
 
-review2.review.create!({
+review2.reviews.create!({
   user_id: 1,
   description: Faker::GameOfThrones.quote,
   rating: 3
 })
 
-review3.review.create!({
+review3.reviews.create!({
   user_id: 1,
   description: Faker::GameOfThrones.quote,
   rating: 1
